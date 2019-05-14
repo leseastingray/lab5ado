@@ -11,7 +11,7 @@ namespace CustomerMaintenance
     {
         public static SqlConnection GetConnection()
         {
-            string connectionString = "Data Source=19158-S17809\\MSSQLSERVER2014;Initial Catalog=MMABooks;Integrated Security=True";
+            string connectionString = "Data Source=1912851-C20251;Initial Catalog=MMABooks;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }

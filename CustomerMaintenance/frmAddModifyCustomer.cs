@@ -37,12 +37,16 @@ namespace CustomerMaintenance
 
         private void LoadStateComboBox()
         {
+            // create new List of States
             List<State> states = new List<State>();
             try
             {
-                //states = StateDB.GetStates();
+                // get states from the state database
+                states = StateDB.GetStates();
                 cboStates.DataSource = states;
+                // what you want the user to see: state name
                 cboStates.DisplayMember = "StateName";
+                // what field you want in the database: state code
                 cboStates.ValueMember = "StateCode";
             }
             catch (Exception ex)

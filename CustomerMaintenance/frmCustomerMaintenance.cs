@@ -42,7 +42,8 @@ namespace CustomerMaintenance
         {
             try
             {
-                //customer = CustomerDB.GetCustomer(customerID);
+                // get Customer object from customerID using GetCustomer in CustomerDB class
+                customer = CustomerDB.GetCustomer(customerID);
             }
             catch (Exception ex)
             {

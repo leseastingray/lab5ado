@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerDB.cs" />
     <Compile Include="frmCustomerMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +118,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="State.cs" />
+    <Compile Include="StateDB.cs" />
     <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup>
