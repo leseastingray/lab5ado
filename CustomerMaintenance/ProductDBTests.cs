@@ -39,5 +39,17 @@ namespace CustomerMaintenance
             Assert.AreEqual("2222      ", p.ProductCode);
             Assert.AreEqual(12, p.OnHandQuantity);
         }
+        [Test]
+        public void TestDeleteProduct()
+        {
+            Product p = new Product();
+            p.ProductCode = "2222";
+            p.Description = "Test Product";
+            p.UnitPrice = 100.00M;
+            p.OnHandQuantity = 12;
+
+            ProductDB.DeleteProduct(p);
+            Assert.AreEqual(null, ProductDB.GetProduct(p.ProductCode));
+        }
     }
 }

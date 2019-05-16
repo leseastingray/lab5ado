@@ -125,5 +125,55 @@ namespace CustomerMaintenance
                 connection.Close();
             }
         }
+        public static bool UpdateProduct(Product oldProduct,
+        Product newProduct)
+        {
+            SqlConnection connection = MMABooksDB.GetConnection();
+            string updateStatement =
+                "UPDATE Products SET " +
+                "ProductCode = @ProductCode, " +
+                "Description = @Description, " +
+                "UnitPrice = @UnitPrice, " +
+                "OnHandQuantity = @OnHandQuantity " +
+                "WHERE ProductCode = @OldProductCode " +
+                "AND Description = @OldDescription " +
+                "AND UnitPrice = @OldUnitPrice " +
+                "AND OnHandQuantity = @OldOnHandQuantity";
+            SqlCommand updateCommand =
+                new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue(
+                "@NewProductCode", newProduct.ProductCode);
+            updateCommand.Parameters.AddWithValue(
+                "@NewDescription", newProduct.Description);
+            updateCommand.Parameters.AddWithValue(
+                "@NewUnitPrice", newProduct.UnitPrice);
+            updateCommand.Parameters.AddWithValue(
+                "@NewOnHandQuantity", newProduct.OnHandQuantity);
+            updateCommand.Parameters.AddWithValue(
+                "@OldProductCode", oldProduct.ProductCode);
+            updateCommand.Parameters.AddWithValue(
+                "@OldDescription", oldProduct.Description);
+            updateCommand.Parameters.AddWithValue(
+                "@OldUnitPrice", oldProduct.UnitPrice);
+            updateCommand.Parameters.AddWithValue(
+                "@OldOnHandQuantity", oldProduct.OnHandQuantity);
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }
