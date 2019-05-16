@@ -55,5 +55,75 @@ namespace CustomerMaintenance
                 connection.Close();
             }
         }
+        public static void AddProduct(Product product)
+        {
+            SqlConnection connection = MMABooksDB.GetConnection();
+            string insertStatement =
+                "INSERT Products " +
+                "(ProductCode, Description, UnitPrice, OnHandQuantity) " +
+                "VALUES (@ProductCode, @Description, @UnitPrice, @OnHandQuantity)";
+            SqlCommand insertCommand =
+                new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue(
+                "@ProductCode", product.ProductCode);
+            insertCommand.Parameters.AddWithValue(
+                "@Description", product.Description);
+            insertCommand.Parameters.AddWithValue(
+                "@UnitPrice", product.UnitPrice);
+            insertCommand.Parameters.AddWithValue(
+                "@OnHandQuantity", product.OnHandQuantity);
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public static bool DeleteProduct(Product product)
+        {
+            // this method requires all parameters to match, in order to handle
+            //  concurrency. this way, if another person edits a record, it won't delete
+            SqlConnection connection = MMABooksDB.GetConnection();
+            string deleteStatement =
+                "DELETE FROM Products " +
+                "WHERE ProductCode = @ProductCode " +
+                "AND Description = @Description " +
+                "AND UnitPrice = @UnitPrice " +
+                "AND OnHandQuantity = @OnHandQuantity";
+            SqlCommand deleteCommand =
+                new SqlCommand(deleteStatement, connection);
+            deleteCommand.Parameters.AddWithValue(
+                "@ProductCode", product.ProductCode);
+            deleteCommand.Parameters.AddWithValue(
+                "@Description", product.Description);
+            deleteCommand.Parameters.AddWithValue(
+                "@UnitPrice", product.UnitPrice);
+            deleteCommand.Parameters.AddWithValue(
+                "@OnHandQuantity", product.OnHandQuantity);
+            try
+            {
+                connection.Open();
+                int count = deleteCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

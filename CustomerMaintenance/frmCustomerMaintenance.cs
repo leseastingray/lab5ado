@@ -117,18 +117,18 @@ namespace CustomerMaintenance
             {
                 try
                 {
-                    //if (!CustomerDB.DeleteCustomer(customer))
-                    //{
-                    //    MessageBox.Show("Another user has updated or deleted " +
-                    //        "that customer.", "Database Error");
-                    //    this.GetCustomer(customer.CustomerID);
-                    //    if (customer != null)
-                    //        this.DisplayCustomer();
-                    //    else
-                    //        this.ClearControls();
-                    //}
-                    //else
-                    //    this.ClearControls();
+                    if (!CustomerDB.DeleteCustomer(customer))
+                    {
+                        MessageBox.Show("Another user has updated or deleted " +
+                            "that customer.", "Database Error");
+                        this.GetCustomer(customer.CustomerID);
+                        if (customer != null)
+                            this.DisplayCustomer();
+                        else
+                            this.ClearControls();
+                    }
+                    else
+                        this.ClearControls();
                 }
                 catch (Exception ex)
                 {

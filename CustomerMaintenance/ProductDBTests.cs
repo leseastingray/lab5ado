@@ -19,5 +19,25 @@ namespace CustomerMaintenance
             Assert.AreEqual("2JST      ", p.ProductCode);
             Assert.AreEqual(6937, p.OnHandQuantity);
         }
+        [Test]
+        public void TestAddProduct()
+        {
+            // note: this test can only be run once until you have written a set-up
+            //  the set-up will reset the database, so that the test can be run
+
+            // create a new Product and set properties
+            Product p = new Product();
+            p.ProductCode = "2222";
+            p.Description = "Test Product";
+            p.UnitPrice = 100.00M;
+            p.OnHandQuantity = 12;
+
+            // add the new Product p to the ProductDB
+            ProductDB.AddProduct(p);
+
+            p = ProductDB.GetProduct("2222      ");
+            Assert.AreEqual("2222      ", p.ProductCode);
+            Assert.AreEqual(12, p.OnHandQuantity);
+        }
     }
 }

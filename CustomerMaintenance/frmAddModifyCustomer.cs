@@ -74,7 +74,7 @@ namespace CustomerMaintenance
                     this.PutCustomerData(customer);
                     try
                     {
-                        //customer.CustomerID = CustomerDB.AddCustomer(customer);
+                        customer.CustomerID = CustomerDB.AddCustomer(customer);
                         this.DialogResult = DialogResult.OK;
                     }
                     catch (Exception ex)
@@ -84,22 +84,24 @@ namespace CustomerMaintenance
                 }
                 else
                 {
+                    // this is for updating Customer
                     Customer newCustomer = new Customer();
+                    // new customer object, old customer object
                     newCustomer.CustomerID = customer.CustomerID;
                     this.PutCustomerData(newCustomer);
                     try
                     {
-                        //if (! CustomerDB.UpdateCustomer(customer, newCustomer))
-                        //{
-                        //    MessageBox.Show("Another user has updated or " +
-                        //        "deleted that customer.", "Database Error");
-                        //    this.DialogResult = DialogResult.Retry;
-                        //}
-                        //else
-                        //{
-                        //    customer = newCustomer;
-                        //    this.DialogResult = DialogResult.OK;
-                        //}
+                        if (! CustomerDB.UpdateCustomer(customer, newCustomer))
+                        {
+                            MessageBox.Show("Another user has updated or " +
+                                "deleted that customer.", "Database Error");
+                            this.DialogResult = DialogResult.Retry;
+                        }
+                        else
+                        {
+                            customer = newCustomer;
+                            this.DialogResult = DialogResult.OK;
+                        }
                     }
                     catch (Exception ex)
                     {
