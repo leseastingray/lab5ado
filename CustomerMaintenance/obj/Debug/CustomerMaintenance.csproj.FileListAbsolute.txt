@@ -58,3 +58,7 @@ C:\ElectricRay\cSharp\SQL\Chapter20Start\CustomerMaintenance\obj\Debug\CustomerM
 C:\ElectricRay\cSharp\SQL\Chapter20Start\CustomerMaintenance\obj\Debug\CustomerMaintenance.csproj.CoreCompileInputs.cache
 C:\ElectricRay\cSharp\SQL\Chapter20Start\CustomerMaintenance\obj\Debug\CustomerMaintenance.exe
 C:\ElectricRay\cSharp\SQL\Chapter20Start\CustomerMaintenance\obj\Debug\CustomerMaintenance.pdb
+C:\ElectricRay\cSharp\SQL\Chapter20Start\CustomerMaintenance\bin\Debug\nunit.framework.dll
+C:\ElectricRay\cSharp\SQL\Chapter20Start\CustomerMaintenance\bin\Debug\nunit.framework.pdb
+C:\ElectricRay\cSharp\SQL\Chapter20Start\CustomerMaintenance\bin\Debug\nunit.framework.xml
+C:\ElectricRay\cSharp\SQL\Chapter20Start\CustomerMaintenance\obj\Debug\CustomerMaintenance.csproj.CopyComplete
