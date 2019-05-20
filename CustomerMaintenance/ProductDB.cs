@@ -131,10 +131,10 @@ namespace CustomerMaintenance
             SqlConnection connection = MMABooksDB.GetConnection();
             string updateStatement =
                 "UPDATE Products SET " +
-                "ProductCode = @ProductCode, " +
-                "Description = @Description, " +
-                "UnitPrice = @UnitPrice, " +
-                "OnHandQuantity = @OnHandQuantity " +
+                "ProductCode = @NewProductCode, " +
+                "Description = @NewDescription, " +
+                "UnitPrice = @NewUnitPrice, " +
+                "OnHandQuantity = @NewOnHandQuantity " +
                 "WHERE ProductCode = @OldProductCode " +
                 "AND Description = @OldDescription " +
                 "AND UnitPrice = @OldUnitPrice " +
